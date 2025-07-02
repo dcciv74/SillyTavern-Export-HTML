@@ -99,8 +99,8 @@ const exportChatAsHtml = async() => {
 	// Clean quoted text
 	Array.from(clone.querySelectorAll('q')).forEach(q => {
 	const span = document.createElement('span');
-	span.innerHTML = cleanQuotedText(q.innerHTML);
-	q.replaceWith(span);
+	span.textContent = q.textContent; // 保留原文字（含「」）
+	q.replaceWith(span); // 移除 <q>，防止瀏覽器再加引號
 });
 
 	const htmlContent = `

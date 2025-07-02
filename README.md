@@ -4,3 +4,4 @@ This repository is forked from LenAnderson/SillyTavern-Export-HTML and the follo
 
 // Rewritten from PR #1 by @matt-c1 (https://github.com/LenAnderson/SillyTavern-Export-HTML/pull/1)
 // The original version Optimize HTML export process, this version adds support for <q> tags, UTF-8 and other details
+(優化中文導出時產生的雙重引號問題，同時維持預設CSS美化樣式)

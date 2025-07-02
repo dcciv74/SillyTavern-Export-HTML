@@ -64,7 +64,9 @@ const exportChatAsHtml = async()=>{
 	} else {
 		bg = await getCachedImg(bgCustom.replace(/^.*url\(['"]?([^)'"]+)['"]?\).*$/, '$1'));
 	}
-	const blob = new Blob([`<html style="margin:0;padding:0;background-image:url('${bg}');background-repeat:no-repeat;background-size:cover;"><body style="margin:0;padding:0;">${clone.outerHTML}</body></html>`], {type:'text/html'});
+	const blob = new Blob([`<!DOCTYPE html><html><head><meta charset="UTF-8"><style>html{margin:0;padding:0;background-image:url('${bg}');background-repeat:no-repeat;background-size:cover;}body{margin:0;padding:0;}</style></head><body>${clone.outerHTML}</body></html>`], {type:'text/html;charset=utf-8'});
+	const url = URL.createObjectURL(blob);
+	const url = URL.createObjectURL(blob);
 	const url = URL.createObjectURL(blob);
 	const a = document.createElement('a');
 	a.href = url;

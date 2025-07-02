@@ -99,8 +99,18 @@ const exportChatAsHtml = async() => {
 	// Clean quoted text
 	Array.from(clone.querySelectorAll('q')).forEach(q => {
 	const span = document.createElement('span');
-	span.textContent = q.textContent; // 保留原文字（含「」）
-	q.replaceWith(span); // 移除 <q>，防止瀏覽器再加引號
+	span.textContent = q.textContent;
+
+	if (q.className) span.className = q.className;
+	if (q.getAttribute('style')) span.setAttribute('style', q.getAttribute('style'));
+
+	for (const attr of q.attributes) {
+		if (!['class', 'style'].includes(attr.name)) {
+			span.setAttribute(attr.name, attr.value);
+		}
+	}
+
+	q.replaceWith(span);
 });
 
 	const htmlContent = `

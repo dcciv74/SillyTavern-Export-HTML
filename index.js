@@ -98,8 +98,10 @@ const exportChatAsHtml = async() => {
 
 	// Clean quoted text
 	Array.from(clone.querySelectorAll('q')).forEach(q => {
-		q.innerHTML = cleanQuotedText(q.innerHTML);
-	});
+	const span = document.createElement('span');
+	span.innerHTML = cleanQuotedText(q.innerHTML);
+	q.replaceWith(span);
+});
 
 	const htmlContent = `
 	<html style="margin:0;padding:0;background-image:url('${bg}');background-repeat:no-repeat;background-size:cover;">
